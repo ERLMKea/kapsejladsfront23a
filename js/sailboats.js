@@ -1,13 +1,11 @@
-function fetchAny(url) {
-    console.log(url)
-    return fetch(url).then((response) => response.json())
-}
+import {fetchAnyUrl, restDelete, getIpAddress} from "./modulejson.js";
+
 
 const popup = document.querySelector("dialog")
 
 async function fetchBoats() {
-    const url = "http://localhost:8080/sailboats"
-    const data = await fetchAny(url)
+    const url = getIpAddress() + "/sailboats"
+    const data = await fetchAnyUrl(url)
     tableBody.innerHTML = ""
     data.forEach(putDataInTableWButton)
 }
@@ -95,7 +93,7 @@ async function updateBoat() {
     console.log("Update boatxxxxxxxxx")
     const formData = new FormData(form)
     const newObject = Object.fromEntries(formData.entries())
-    const url = "http://localhost:8080/sailboat/" + newObject.boatID;
+    const url = getIpAddress() + "/sailboat/" + newObject.boatID;
     const updatedData = {
         method: "PUT",
         headers: {"content-type": "application/json"},
@@ -117,13 +115,8 @@ async function updateBoat() {
 async function deleteBoat(data) {
     const confirmDelete = confirm("Er du sikker på du vil slette " + data.name + "?")
     if (confirmDelete) {
-        const url = "http://localhost:8080/sailboat/" + data.boatID
-        const deleteData = {
-            method: "DELETE",
-            headers: {"content-type": "application/json"},
-            body: JSON.stringify(data)
-        }
-        const response = await fetch(url, deleteData)
+        const url = getIpAddress() + "/sailboat/" + data.boatID
+        const response = await restDelete(url)
         if (!response.ok) {
             alert("Kunne ikke slette")
         } else {
@@ -132,7 +125,6 @@ async function deleteBoat(data) {
         return response
     }
 }
-
 
 
 fetchBoats()
