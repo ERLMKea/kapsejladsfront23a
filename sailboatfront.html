@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<dialog>
+  <div class="popUpWrapper">
+    <div id="formHandler">
+      <form id="postBoat" >
+        <label for="name">Navn</label><br>
+        <input type="text" id="name" name="name"><br>
+
+        <label for="boatType">Båd type</label><br>
+        <select id="boatType" name="boatType">
+          <option value="LONGERTHAN40">Større end 40 fod</option>
+          <option value="SMALLERTHAN25">Mindre end 25 fod</option>
+          <option value="FROM25TO40">Mellem 25-40</option>
+        </select>
+
+        <br>
+        <button id="submitData" type="submit">Gem</button>
+      </form>
+
+    </div>
+    <div>
+      <button class="close">
+        Luk
+      </button>
+    </div>
+  </div>
+</dialog>
+
+
+
+
+<div id="tableContainer">
+  <table id="tableWrapper">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Sejlbåd Type</th>
+      <th>Navn</th>
+      <th>Rediger</th>
+      <th>Resultater</th>
+      <th>Slet</th>
+    </tr>
+    </thead>
+    <tbody id="tableBody">
+    </tbody>
+  </table>
+</div>
+
+
+</body>
+</html>
