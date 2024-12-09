@@ -1,5 +1,17 @@
+function fetchAny(url) {
+    console.log(url)
+    return fetch(url).then((response) => response.json())
+}
 
+const popup = document.querySelector("dialog")
 
+async function fetchBoats() {
+    const url = "http://localhost:8080/sailboats"
+    const data = await fetchAny(url)
+    tableBody.innerHTML = ""
+    data.forEach(putDataInTableWButton)
+    addSubmitEvent()
+}
 
 function putDataInTableWButton(data, index) {
 
@@ -38,3 +50,5 @@ function putDataInTableWButton(data, index) {
     })
 
 }
+
+fetchBoats()
