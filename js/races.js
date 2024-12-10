@@ -36,9 +36,8 @@ function putDataInTableWButton(data, index) {
 
 function editRace(data) {
     console.log("editboat")
-    debugger
     window.localStorage.setItem("raceID", data.raceID)
-    window.location.href = "xeditrace.html";
+    window.location.href = "editrace.html";
 }
 
 
